@@ -22,5 +22,9 @@ class Team extends Model
     {
         return $this->belongsToMany(User::class);
     }
+    public function teamMembers(): HasMany
+    {
+        return $this->hasMany(TeamUsers::class , 'team_id');
+    }
 
 }
