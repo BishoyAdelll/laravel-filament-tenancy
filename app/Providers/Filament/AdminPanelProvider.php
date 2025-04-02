@@ -27,6 +27,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->id('admin')
             ->path('admin')
+            ->sidebarWidth('14rem')
             ->userMenuItems([
                 MenuItem::make()
                     ->label('Dashboard')
@@ -34,7 +35,7 @@ class AdminPanelProvider extends PanelProvider
                     ->url('/app')
             ])
             ->colors([
-                'primary' => Color::Emerald,
+                'primary' => Color::Violet,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -59,7 +60,11 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->plugins([
                 \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make(),
-            ]);
+            ])
+            ->brandName(__('custom.brand_name'))
+            ->brandLogo(asset('Capture3.png'))
+            ->brandLogoHeight('50px')
+            ;
     }
 }
 

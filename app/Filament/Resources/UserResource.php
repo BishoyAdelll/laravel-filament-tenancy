@@ -17,8 +17,26 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-shield-exclamation';
+    public static function label(): string
+    {
+        return __('custom.users');
+    }
+    public static function getPluralModelLabel(): string
+    {
 
+        return __('custom.users');
+    }
+    public static function getModelLabel(): string
+    {
+        return __('custom.users');
+
+    }
+    public static function getNavigationLabel(): string
+    {
+
+        return __('custom.users');
+    }
     public static function form(Form $form): Form
     {
         return $form
@@ -30,11 +48,17 @@ class UserResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Toggle::make('is_admin')
+                    ->required(),
                 Forms\Components\DateTimePicker::make('email_verified_at'),
                 Forms\Components\TextInput::make('password')
+                    ->hiddenOn('edit')
                     ->password()
                     ->required()
                     ->maxLength(255),
+                Forms\Components\CheckboxList::make('roles')
+                    ->relationship('roles', 'name')
+                    ->searchable(),
             ]);
     }
 

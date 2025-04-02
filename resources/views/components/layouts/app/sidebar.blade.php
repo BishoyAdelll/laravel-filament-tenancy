@@ -73,6 +73,28 @@
                     </form>
                 </flux:menu>
             </flux:dropdown>
+            <!-- localizaion -->
+            <flux:dropdown position="bottom" align="start">
+                <flux:profile
+                    name="Localization"
+                    initials="LAN"
+                    icon-trailing="chevrons-up-down"
+                />
+
+                <flux:menu class="w-[220px]">
+                    @foreach (config('Localization.locales') as $locale )
+                        <flux:menu.radio.group>
+                            <flux:menu.item :href="route('localization',$locale)" icon="cog" wire:navigate>{{ __($locale) }}</flux:menu.item>
+                        </flux:menu.radio.group>
+                        <flux:menu.separator />
+                    @endforeach
+                    {{-- <flux:menu.radio.group>
+                        <flux:menu.item :href="route('settings.profile')" icon="cog" wire:navigate>{{ __('Settings') }}</flux:menu.item>
+                    </flux:menu.radio.group>
+                    <flux:menu.separator /> --}}
+
+                </flux:menu>
+            </flux:dropdown>
         </flux:sidebar>
 
         <!-- Mobile User Menu -->

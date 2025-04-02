@@ -16,8 +16,26 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class TeamResource extends Resource
 {
     protected static ?string $model = Team::class;
+    public static function label(): string
+    {
+        return __('custom.teams');
+    }
+    public static function getPluralModelLabel(): string
+    {
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+        return __('custom.teams');
+    }
+    public static function getModelLabel(): string
+    {
+        return __('custom.teams');
+
+    }
+    public static function getNavigationLabel(): string
+    {
+
+        return __('custom.teams');
+    }
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
     public static function form(Form $form): Form
     {

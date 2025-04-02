@@ -31,6 +31,7 @@ class AppPanelProvider extends PanelProvider
             ->default()
             ->id('app')
             ->path('app')
+            ->sidebarWidth('14rem')
             ->login()
 //            ->registration()
             ->userMenuItems([
@@ -41,7 +42,7 @@ class AppPanelProvider extends PanelProvider
                 ->visible(fn(): bool =>auth()->user()->is_admin)
             ])
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Violet,
             ])
             ->discoverResources(in: app_path('Filament/App/Resources'), for: 'App\\Filament\\App\\Resources')
             ->discoverPages(in: app_path('Filament/App/Pages'), for: 'App\\Filament\\App\\Pages')
@@ -69,6 +70,9 @@ class AppPanelProvider extends PanelProvider
             ->tenantProfile(EditTeamProfile::class)
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+        ->brandName(__('custom.brand_name'))
+        ->brandLogo(asset('Capture3.png'))
+        ->brandLogoHeight('50px');
     }
 }
